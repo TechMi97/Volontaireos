@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "303016406417",
+    "firebase_url": "https://timestone-7163a.firebaseio.com",
+    "project_id": "timestone-7163a",
+    "storage_bucket": "timestone-7163a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303016406417:android:c1a188495427ee0a",
+        "android_client_info": {
+          "package_name": "com.example.asad.volontaireos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303016406417-535e6lkj0q6si19kdcd5c8aa3askjd9s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAs6krTWW1OlWgvMV6hyOsS4OSKLk0srK8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
