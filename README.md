@@ -2,6 +2,8 @@
 
 Update 1.5
 
+17-11-18 -> 6pm
+
 *Added Sign Up and Log In
 
 *Notes
