@@ -7,8 +7,8 @@ Update  1.8
  
 *Added 2 more pages
 
--Added Welcome Page
--Added Log in and Sign Up Page
+- Added Welcome Page
+- Added Log in and Sign Up Page
 
 Update 1.5
 
