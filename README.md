@@ -1,9 +1,16 @@
 # Volontaireos
 
+Update  2.0
+
+ 20-11-18 
+ 
+*MAPS
+- Can now display user location 
+- Require to enable location permission yer 
 
 Update  1.8
 
- 19-11-18 -> 9pm
+ 19-11-18 
  
 *Added 2 more pages
 
@@ -12,7 +19,7 @@ Update  1.8
 
 Update 1.5
 
-17-11-18 -> 6pm
+17-11-18 
 
 *Added Sign Up and Log In
 
