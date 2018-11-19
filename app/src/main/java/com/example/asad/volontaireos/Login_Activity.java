@@ -24,7 +24,7 @@ public class Login_Activity extends AppCompatActivity {
     DatabaseReference users ;
 
     EditText editPassword,editUsername ;
-    Button btnSignIn;
+    Button btnSignIn ,btn_To_SignUp;
 
 
     @Override
@@ -41,6 +41,7 @@ public class Login_Activity extends AppCompatActivity {
         editPassword = (EditText) findViewById(R.id.editPassword);
 
         btnSignIn = (Button) findViewById(R.id.btnSignIn);
+        btn_To_SignUp = (Button) findViewById(R.id.btn_To_SignUp);
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +50,17 @@ public class Login_Activity extends AppCompatActivity {
                        editPassword.getText().toString());
             }
         });
+
+        btn_To_SignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent aa  = new Intent (getApplicationContext(),Sign_Up_Activity.class);
+                startActivity(aa);
+            }
+        });
+
+
+
 
     }
 
