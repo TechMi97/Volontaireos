@@ -1,5 +1,7 @@
 package com.example.asad.volontaireos;
 
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import android.Manifest;
 
 import java.util.HashMap;
 
@@ -44,10 +47,14 @@ public class Maps_Activity extends FragmentActivity implements OnMapReadyCallbac
         // Authenticate with Firebase when the Google map is loaded
         mMap = googleMap;
         mMap.setMaxZoomPreference(16);
-        loginToFirebase();
+        //loginToFirebase();
+        if ((ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)) {
+            mMap.setMyLocationEnabled(true);
+        }
     }
 
-    private void loginToFirebase() {
+/*    private void loginToFirebase() {
         String email = getString(R.string.firebase_email);
         String password = getString(R.string.firebase_password);
         // Authenticate with Firebase and subscribe to updates
@@ -63,9 +70,9 @@ public class Maps_Activity extends FragmentActivity implements OnMapReadyCallbac
                 }
             }
         });
-    }
+    }*/
 
-    private void subscribeToUpdates() {
+    /* private void subscribeToUpdates() {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(getString(R.string.firebase_path));
         ref.addChildEventListener(new ChildEventListener() {
             @Override
@@ -91,7 +98,7 @@ public class Maps_Activity extends FragmentActivity implements OnMapReadyCallbac
                 Log.d(TAG, "Failed to read value.", error.toException());
             }
         });
-    }
+    } */
 
     private void setMarker(DataSnapshot dataSnapshot) {
         // When a location update is received, put or update
