@@ -1,9 +1,7 @@
 package com.example.asad.volontaireos;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
 public class Main_Page extends AppCompatActivity {
@@ -17,13 +15,13 @@ public class Main_Page extends AppCompatActivity {
 
         button = (Button) findViewById(R.id.button);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        /*button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent a = new Intent(getApplicationContext(), Maps_Activity.class);
                 startActivity(a);
 
             }
-        });
+        });*/
     }
 }
