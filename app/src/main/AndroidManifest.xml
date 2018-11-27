@@ -52,9 +52,9 @@
         <activity android:name=".A2_Volunteer_Login" />
         <activity android:name=".A3_Maps" />
         <activity android:name=".A4_Requester_Login" />
-        <activity android:name=".A5_Volunteer_Map_Activity" />
+        <activity android:name=".B5_Volunteer_Map_Activity" />
         <activity android:name=".A5_VM" />
-        <activity android:name=".A55_VVM" />
+        <activity android:name=".A6_RM" />
 
         <activity android:name=".Choice_Page" />
         <activity android:name=".L_G_S" />

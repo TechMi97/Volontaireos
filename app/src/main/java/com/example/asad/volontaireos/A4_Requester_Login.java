@@ -29,8 +29,6 @@ public class A4_Requester_Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a3_requester_login);
 
-
-
         mAuth = FirebaseAuth.getInstance();
 
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -38,7 +36,7 @@ public class A4_Requester_Login extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if(user!=null){
-                    Intent b  =  new Intent(A4_Requester_Login.this,A5_Volunteer_Map_Activity.class);
+                    Intent b  =  new Intent(A4_Requester_Login.this,B5_Volunteer_Map_Activity.class);
                     startActivity(b);
                     finish();
                     return;
@@ -61,13 +59,13 @@ public class A4_Requester_Login extends AppCompatActivity {
                 mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(A4_Requester_Login.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
                         if (!task.isSuccessful())
                             Toast.makeText(A4_Requester_Login.this,"Sign up error",Toast.LENGTH_SHORT).show();
                         else{
                             String user_id = mAuth.getCurrentUser().getUid();
-                            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users_A").child("Requesters").child(user_id);
-                            current_user_db.setValue(true);
-
+                            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users_A").child("Requesters").child(user_id).child("email");
+                            current_user_db.setValue(email);
                         }
                     }
                 });

@@ -37,7 +37,7 @@ public class A2_Volunteer_Login extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if(user!=null){
-                    Intent b  =  new Intent(A2_Volunteer_Login.this,A55_VVM.class);
+                    Intent b  =  new Intent(A2_Volunteer_Login.this,A5_VM.class);
                     startActivity(b);
                     finish();
                     return;
@@ -67,7 +67,7 @@ public class A2_Volunteer_Login extends AppCompatActivity {
                             Toast.makeText(A2_Volunteer_Login.this,"Signupppp hooray",Toast.LENGTH_SHORT).show();
                             String user_id = mAuth.getCurrentUser().getUid();
                             DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference()
-                                                                .child("Users_A").child("Volunteers").child(user_id).child("gasgag");
+                                                                .child("Users_A").child("Volunteers").child(user_id).child("email");
 /*                            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference()
                                     .child("Users_A").child("Volunteers").child(user_id);*/
 

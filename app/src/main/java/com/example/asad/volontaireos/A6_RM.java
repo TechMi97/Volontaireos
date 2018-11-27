@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
@@ -20,17 +21,17 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class A5_VM extends FragmentActivity implements OnMapReadyCallback {
+public class A6_RM extends AppCompatActivity implements OnMapReadyCallback {
+
 
     private GoogleMap mMap;
-    private Button mLogout;
-
-
+    private Button mLogout , mRequest ;
+    private LatLng pickupLocation;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.a5_vmaps);
+        setContentView(R.layout.a7_rmaps);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -40,19 +41,46 @@ public class A5_VM extends FragmentActivity implements OnMapReadyCallback {
         GeoFire geoFire = new GeoFire(ref);
 
         mLogout=(Button) findViewById(R.id.logout);
+
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 FirebaseAuth.getInstance().signOut();
-                Intent a = new Intent(A5_VM.this,A1_Main.class);
+                FirebaseAuth.getInstance().signOut();
+                Intent a = new Intent(A6_RM.this,A1_Main.class);
                 startActivity(a);
                 finish();
                 return;
             }
         });
 
+        mRequest = (Button) findViewById(R.id.request);
 
-        geoFire.setLocation(userId, new GeoLocation(27.1959532, 78.0245963), new GeoFire.CompletionListener() {
+        mRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("CustomerRequest");
+
+                GeoFire geoFire = new GeoFire(ref);
+                geoFire.setLocation(userId, new GeoLocation(5.3342641, 100.3066604), new GeoFire.CompletionListener() {
+                    @Override
+                    public void onComplete(String key, DatabaseError error) {
+                        if(error!=null)
+                            System.err.println("Error"+ error);
+                        else
+                            System.out.println("Location saved");
+                    }
+                });
+
+                pickupLocation = new LatLng(5.3342641,100.3066604);
+                mMap.addMarker(new MarkerOptions().position(pickupLocation).title("Pickup Here"));
+                mRequest.setText("Gettin your Driver");
+
+            }
+        });
+
+
+        geoFire.setLocation(userId, new GeoLocation(5.3342641, 100.3066604), new GeoFire.CompletionListener() {
             @Override
             public void onComplete(String key, DatabaseError error) {
                 if(error!=null)
@@ -66,10 +94,10 @@ public class A5_VM extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
         //Add marker in USM
-        LatLng USM = new LatLng(5.35,100.30);
-        mMap.addMarker(new MarkerOptions().position(USM).title("USM"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(USM));
+        LatLng QB = new LatLng(5.3342641,100.3066604);
+        mMap.addMarker(new MarkerOptions().position(QB).title("Queensbay"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(QB));
+
     }
 }

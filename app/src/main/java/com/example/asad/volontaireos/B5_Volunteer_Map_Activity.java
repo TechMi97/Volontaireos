@@ -25,7 +25,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class A5_Volunteer_Map_Activity extends FragmentActivity implements OnMapReadyCallback {
+public class B5_Volunteer_Map_Activity extends FragmentActivity implements OnMapReadyCallback {
 
     Location mLastLocation;
     LocationRequest mLocationRequest;
@@ -177,13 +177,13 @@ public class A5_Volunteer_Map_Activity extends FragmentActivity implements OnMap
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                ActivityCompat.requestPermissions(A5_Volunteer_Map_Activity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                                ActivityCompat.requestPermissions(B5_Volunteer_Map_Activity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
                             }
                         })
                         .create()
                         .show();
             } else {
-                ActivityCompat.requestPermissions(A5_Volunteer_Map_Activity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                ActivityCompat.requestPermissions(B5_Volunteer_Map_Activity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             }
         }
     }
