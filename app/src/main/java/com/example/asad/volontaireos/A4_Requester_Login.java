@@ -85,6 +85,8 @@ public class A4_Requester_Login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (!task.isSuccessful())
                             Toast.makeText(A4_Requester_Login.this,"Sign in error",Toast.LENGTH_SHORT).show();
+                        if (task.isSuccessful())
+                            Toast.makeText(A4_Requester_Login.this,"Sign in sucessfullll",Toast.LENGTH_SHORT).show();
 
 
                     }

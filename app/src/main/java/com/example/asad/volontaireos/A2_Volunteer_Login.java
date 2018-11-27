@@ -60,14 +60,19 @@ public class A2_Volunteer_Login extends AppCompatActivity {
                 mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(A2_Volunteer_Login.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
                         if (!task.isSuccessful())
                         Toast.makeText(A2_Volunteer_Login.this,"Sign up error",Toast.LENGTH_SHORT).show();
                         else{
+                            Toast.makeText(A2_Volunteer_Login.this,"Signupppp hooray",Toast.LENGTH_SHORT).show();
                             String user_id = mAuth.getCurrentUser().getUid();
                             DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference()
-                                                                .child("Users_A").child("Volunteers").child(user_id);
-                            current_user_db.setValue(true);
+                                                                .child("Users_A").child("Volunteers").child(user_id).child("gasgag");
+/*                            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference()
+                                    .child("Users_A").child("Volunteers").child(user_id);*/
 
+                            //current_user_db.setValue(true);
+                            current_user_db.setValue(email);
                         }
                     }
                 });
@@ -80,11 +85,16 @@ public class A2_Volunteer_Login extends AppCompatActivity {
             public void onClick(View v) {
                 final String email = mEmail.getText().toString();
                 final String password = mPassword.getText().toString();
-                mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(A2_Volunteer_Login.this, new OnCompleteListener<AuthResult>() {
-                    @Override
+                //mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(A2_Volunteer_Login.this, new OnCompleteListener<AuthResult>() {
+                mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(A2_Volunteer_Login.this, new OnCompleteListener<AuthResult>() {
+                @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (!task.isSuccessful())
-                        Toast.makeText(A2_Volunteer_Login.this,"Sign in error",Toast.LENGTH_SHORT).show();
+                        if(task.isSuccessful())
+                        {Toast.makeText(A2_Volunteer_Login.this,"Sign in successsss",Toast.LENGTH_SHORT).show();}
+
+                        else if (!task.isSuccessful())
+                        {Toast.makeText(A2_Volunteer_Login.this,"Sign in error",Toast.LENGTH_SHORT).show();}
+
 
                     }
                 });

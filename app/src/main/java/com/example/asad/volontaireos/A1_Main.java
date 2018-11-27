@@ -18,6 +18,7 @@ public class A1_Main extends AppCompatActivity {
         mVolunteer = (Button) findViewById(R.id.btnV);
         mRequester  = (Button) findViewById(R.id.btnR);
 
+        //startService(new Intent(A1_Main.this, onAppKilled.class));
         mVolunteer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -34,7 +34,7 @@ public class A55_VVM extends FragmentActivity implements OnMapReadyCallback {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("VolunteerAvailable");
         GeoFire geoFire = new GeoFire(ref);
 
-        geoFire.setLocation("AAD", new GeoLocation(100.55, 55.3), new GeoFire.CompletionListener() {
+        geoFire.setLocation("AAD", new GeoLocation(27.1959532, 78.0245963), new GeoFire.CompletionListener() {
             @Override
             public void onComplete(String key, DatabaseError error) {
                 if(error!=null)
