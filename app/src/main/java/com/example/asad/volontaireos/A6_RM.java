@@ -3,7 +3,6 @@ package com.example.asad.volontaireos;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -40,7 +39,7 @@ public class A6_RM extends AppCompatActivity implements OnMapReadyCallback {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("VolunteerAvailable");
         GeoFire geoFire = new GeoFire(ref);
 
-        mLogout=(Button) findViewById(R.id.logout);
+        mLogout=(Button) findViewById(R.id.logouttayub);
 
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override

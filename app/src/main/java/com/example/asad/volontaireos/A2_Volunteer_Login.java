@@ -68,10 +68,7 @@ public class A2_Volunteer_Login extends AppCompatActivity {
                             String user_id = mAuth.getCurrentUser().getUid();
                             DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference()
                                                                 .child("Users_A").child("Volunteers").child(user_id).child("email");
-/*                            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference()
-                                    .child("Users_A").child("Volunteers").child(user_id);*/
 
-                            //current_user_db.setValue(true);
                             current_user_db.setValue(email);
                         }
                     }
@@ -85,7 +82,7 @@ public class A2_Volunteer_Login extends AppCompatActivity {
             public void onClick(View v) {
                 final String email = mEmail.getText().toString();
                 final String password = mPassword.getText().toString();
-                //mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(A2_Volunteer_Login.this, new OnCompleteListener<AuthResult>() {
+
                 mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(A2_Volunteer_Login.this, new OnCompleteListener<AuthResult>() {
                 @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
