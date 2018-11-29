@@ -13,7 +13,7 @@ public class A0_Welcome_Page extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
+        setContentView(R.layout.a0_welcome);
 
         btnContinue = (Button) findViewById(R.id.btnContinue);
 

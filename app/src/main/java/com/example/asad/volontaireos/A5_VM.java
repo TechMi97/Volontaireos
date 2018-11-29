@@ -63,7 +63,7 @@ public class A5_VM extends FragmentActivity implements OnMapReadyCallback {
 
 
 
-        geoFire.setLocation(userId, new GeoLocation(27.1959532, 78.0245963), new GeoFire.CompletionListener() {
+        geoFire.setLocation(userId, new GeoLocation(5.35, 100.30), new GeoFire.CompletionListener() {
             @Override
             public void onComplete(String key, DatabaseError error) {
                 if (error != null)
@@ -108,6 +108,11 @@ public class A5_VM extends FragmentActivity implements OnMapReadyCallback {
         LatLng USM = new LatLng(5.35,100.30);
         mMap.addMarker(new MarkerOptions().position(USM).title("USM"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(USM));
+
+        //Add marker in QB
+        LatLng QB = new LatLng(5.33,100.30);
+        mMap.addMarker(new MarkerOptions().position(QB).title("QB"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(QB));
     }
 
 

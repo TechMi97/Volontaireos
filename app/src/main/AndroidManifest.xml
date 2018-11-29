@@ -55,25 +55,12 @@
         <activity android:name=".B5_Volunteer_Map_Activity" />
         <activity android:name=".A5_VM" />
         <activity android:name=".A6_RM" />
+        <activity android:name=".A7_Rsignup" />
+
         <activity android:name=".Choice_Page" />
         <activity android:name=".L_G_S" />
 
-        <!--
-            activity
-            android:name=".Maps_Activity"
-            android:label="@string/title_activity_maps" /
-        -->
 
-
-        <!--
-        service
-            android:name=".TrackerService"
-            android:enabled="true"
-            android:exported="true" />
-
-        <activity android:name=".TrackerActivity"></activity
-        -->
-        <activity android:name=".A7_Rsignup"></activity>
     </application>
 
 </manifest>
