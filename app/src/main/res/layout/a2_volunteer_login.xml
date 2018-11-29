@@ -21,7 +21,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnSignUp"
-        />
+        app:layout_constraintVertical_bias="0.715" />
 
     <TextView
         android:id="@+id/SignUp"
@@ -34,7 +34,7 @@
 
         android:layout_marginRight="8dp"
         android:layout_marginBottom="24dp"
-        android:text="Sign Up"
+        android:text="Hi!"
         android:textSize="40sp"
 
 
@@ -47,7 +47,7 @@
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.073"/>
+        app:layout_constraintVertical_bias="0.073" />
 
 
 
@@ -57,22 +57,22 @@
         android:id="@+id/editEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:layout_marginLeft="33dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="188dp"
         android:layout_marginRight="32dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
-        android:hint="Email"
 
+        android:hint="Email"
         android:inputType="textEmailAddress"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editUsername"
-
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="231dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.03" />
 
 
     <EditText
@@ -90,23 +90,20 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editEmail"
-        app:layout_constraintVertical_bias="0.198" />
+        app:layout_constraintVertical_bias="0.18" />
 
     <Button
         android:id="@+id/btnSignUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="364dp"
         android:layout_marginRight="32dp"
         android:text="Register"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editPassword"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="378dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -97,6 +97,7 @@ public class A6_RM extends AppCompatActivity implements OnMapReadyCallback {
         LatLng QB = new LatLng(5.3342641,100.3066604);
         mMap.addMarker(new MarkerOptions().position(QB).title("Queensbay"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(QB));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
 
     }
 }

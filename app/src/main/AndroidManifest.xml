@@ -37,10 +37,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDAFoS5Hs6UwNVus50WI__PW-oYvQV37YY" />
 
-        <activity android:name=".Sign_Up_Activity" />
-        <activity android:name=".Login_Activity" />
-        <activity android:name=".Main_Page" />
-        <activity android:name=".P2_SignUp_LogIn" />
         <activity android:name=".A0_Welcome_Page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -56,11 +52,8 @@
         <activity android:name=".A5_VM" />
         <activity android:name=".A6_RM" />
         <activity android:name=".A7_Rsignup" />
-
-        <activity android:name=".Choice_Page" />
         <activity android:name=".L_G_S" />
-
-
+        <activity android:name=".A8_Vsignup"></activity>
     </application>
 
 </manifest>

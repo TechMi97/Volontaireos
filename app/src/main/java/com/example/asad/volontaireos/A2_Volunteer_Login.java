@@ -55,25 +55,10 @@ public class A2_Volunteer_Login extends AppCompatActivity {
         mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String email = mEmail.getText().toString();
-                final String password = mPassword.getText().toString();
-                mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(A2_Volunteer_Login.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-
-                        if (!task.isSuccessful())
-                        Toast.makeText(A2_Volunteer_Login.this,"Sign up error",Toast.LENGTH_SHORT).show();
-                        else{
-                            Toast.makeText(A2_Volunteer_Login.this,"Signupppp hooray",Toast.LENGTH_SHORT).show();
-                            String user_id = mAuth.getCurrentUser().getUid();
-                            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference()
-                                                                .child("Users_A").child("Volunteers").child(user_id).child("email");
-
-                            current_user_db.setValue(email);
-                        }
-                    }
-                });
-
+                Intent b = new Intent(A2_Volunteer_Login.this,A8_Vsignup.class);
+                startActivity(b);
+                finish();
+                return;
             }
         });
 
