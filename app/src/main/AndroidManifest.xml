@@ -27,27 +27,27 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-       <!-- <meta-data
+        <!--
+            <meta-data
             android:name="com.google.android.android.maps.v2.API_KEY"
-            android:value="AIzaSyDAFoS5Hs6UwNVus50WI__PW-oYvQV37YY" />-->
+            android:value="AIzaSyDAFoS5Hs6UwNVus50WI__PW-oYvQV37YY" />
+        -->
 
-        <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDAFoS5Hs6UwNVus50WI__PW-oYvQV37YY"/>
-
-
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDAFoS5Hs6UwNVus50WI__PW-oYvQV37YY" />
 
         <activity android:name=".Sign_Up_Activity" />
         <activity android:name=".Login_Activity" />
         <activity android:name=".Main_Page" />
         <activity android:name=".P2_SignUp_LogIn" />
-
         <activity android:name=".A0_Welcome_Page">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".A1_Main" />
         <activity android:name=".A2_Volunteer_Login" />
         <activity android:name=".A3_Maps" />
@@ -55,22 +55,25 @@
         <activity android:name=".B5_Volunteer_Map_Activity" />
         <activity android:name=".A5_VM" />
         <activity android:name=".A6_RM" />
-
         <activity android:name=".Choice_Page" />
         <activity android:name=".L_G_S" />
 
-
-
-        <!--activity
+        <!--
+            activity
             android:name=".Maps_Activity"
-            android:label="@string/title_activity_maps" /-->
+            android:label="@string/title_activity_maps" /
+        -->
 
-        <!--service
+
+        <!--
+        service
             android:name=".TrackerService"
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".TrackerActivity"></activity-->
+        <activity android:name=".TrackerActivity"></activity
+        -->
+        <activity android:name=".A7_Rsignup"></activity>
     </application>
 
 </manifest>

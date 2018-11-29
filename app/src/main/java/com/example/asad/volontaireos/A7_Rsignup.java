@@ -1,9 +1,9 @@
 package com.example.asad.volontaireos;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,9 +17,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class A4_Requester_Login extends AppCompatActivity {
-    private EditText mEmail, mPassword ;
-    private Button mLogIn , mRegister ;
+public class A7_Rsignup extends AppCompatActivity {
+    private EditText mEmail, mPassword ,mAge,mIC,mNation,mName ;
+    private Button  mRegister ;
 
     private FirebaseAuth mAuth ;
     private FirebaseAuth.AuthStateListener firebaseAuthListener ;
@@ -27,7 +27,7 @@ public class A4_Requester_Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.a3_requester_login);
+        setContentView(R.layout.activity_a7__rsignup);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -36,7 +36,7 @@ public class A4_Requester_Login extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if(user!=null){
-                    Intent b  =  new Intent(A4_Requester_Login.this,A6_RM.class);
+                    Intent b  =  new Intent(A7_Rsignup.this,A6_RM.class);
                     startActivity(b);
                     finish();
                     return;
@@ -46,63 +46,53 @@ public class A4_Requester_Login extends AppCompatActivity {
 
         mEmail    = (EditText) findViewById(R.id.editEmail);
         mPassword = (EditText) findViewById(R.id.editPassword);
-
-        mLogIn    = (Button) findViewById(R.id.btn_To_SignIn);
+        mAge = (EditText) findViewById(R.id.editAge);
+        mIC = (EditText) findViewById(R.id.editIC);
+        mNation = (EditText) findViewById(R.id.editNation);
+        mName = (EditText) findViewById(R.id.editUsername);
         mRegister = (Button) findViewById(R.id.btnSignUp);
+
+
 
         mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent b = new Intent(A4_Requester_Login.this,A7_Rsignup.class);
-                startActivity(b);
-                finish();
-                return;
-            }
-        });
-       /* mRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 final String email = mEmail.getText().toString();
                 final String password = mPassword.getText().toString();
-                mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(A4_Requester_Login.this, new OnCompleteListener<AuthResult>() {
+                final String age = mAge.getText().toString();
+                final String IC = mIC.getText().toString();
+                final String nation = mNation.getText().toString();
+                final String name = mName.getText().toString();
+
+                mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(A7_Rsignup.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (!task.isSuccessful())
-                            Toast.makeText(A4_Requester_Login.this,"Sign up error",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(A7_Rsignup.this,"Sign up error",Toast.LENGTH_SHORT).show();
                         else{
-                            Toast.makeText(A4_Requester_Login.this,"Signuppp success",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(A7_Rsignup.this,"Signuppp success",Toast.LENGTH_SHORT).show();
                             String user_id = mAuth.getCurrentUser().getUid();
                             DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users_A").child("Requesters").child(user_id).child("email");
                             current_user_db.setValue(email);
+                            current_user_db = FirebaseDatabase.getInstance().getReference().child("Users_A").child("Requesters").child(user_id).child("password");
+                            current_user_db.setValue(password);
+                            current_user_db = FirebaseDatabase.getInstance().getReference().child("Users_A").child("Requesters").child(user_id).child("Age");
+                            current_user_db.setValue(age);
+                            current_user_db = FirebaseDatabase.getInstance().getReference().child("Users_A").child("Requesters").child(user_id).child("IC");
+                            current_user_db.setValue(IC);
+                            current_user_db = FirebaseDatabase.getInstance().getReference().child("Users_A").child("Requesters").child(user_id).child("Nationality");
+                            current_user_db.setValue(nation);
+                            current_user_db = FirebaseDatabase.getInstance().getReference().child("Users_A").child("Requesters").child(user_id).child("Name");
+                            current_user_db.setValue(name);
                         }
                     }
                 });
 
             }
-        });*/
-
-
-
-        mLogIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final String email = mEmail.getText().toString();
-                final String password = mPassword.getText().toString();
-                mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(A4_Requester_Login.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful())
-                            Toast.makeText(A4_Requester_Login.this,"Sign in sucessfullll",Toast.LENGTH_SHORT).show();
-
-                        if (!task.isSuccessful())
-                            Toast.makeText(A4_Requester_Login.this,"Sign in error",Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-
-            }
         });
+
+
 
     }
 
