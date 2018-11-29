@@ -9,4 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 
 public class L_G_S extends AppCompatActivity {
 
+
+    
+
 }

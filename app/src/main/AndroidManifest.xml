@@ -53,7 +53,10 @@
         <activity android:name=".A6_RM" />
         <activity android:name=".A7_Rsignup" />
         <activity android:name=".L_G_S" />
-        <activity android:name=".A8_Vsignup"></activity>
+        <activity android:name=".A8_Vsignup" />
+        <activity android:name=".A9_Rmapreq" />
+        <activity android:name=".A10_VMap" />
+        <activity android:name=".A11_makereq"></activity>
     </application>
 
 </manifest>
