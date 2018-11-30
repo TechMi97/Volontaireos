@@ -58,9 +58,9 @@ public class A5_VM extends AppCompatActivity implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        final String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("VolunteerAvailable");
-        GeoFire geoFire = new GeoFire(ref);
+        final GeoFire geoFire = new GeoFire(ref);
 
         geoFire.setLocation(userId, new GeoLocation(5.35, 100.30), new GeoFire.CompletionListener() {
             @Override
@@ -73,7 +73,7 @@ public class A5_VM extends AppCompatActivity implements OnMapReadyCallback {
         });
 
 
-        PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
+ PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
 
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
@@ -83,7 +83,53 @@ public class A5_VM extends AppCompatActivity implements OnMapReadyCallback {
                 mMap.addMarker(new MarkerOptions().position(place.getLatLng()).title(place.getName().toString()));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(place.getLatLng()));
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(), 12.0f));
-            }
+
+                geoFire.setLocation("hahaarshaad", new
+                        GeoLocation(place.getLatLng().latitude, place.getLatLng().longitude), new
+                        GeoFire.CompletionListener() {
+                            @Override
+
+                            public void onComplete(String key, DatabaseError error) {
+                                if (error != null) {
+                                    Toast.makeText(A5_VM.this, "There was an error saving the location to GeoFire: " + error, Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(A5_VM.this, "Location saved on server successfully!", Toast.LENGTH_LONG).show();
+
+                                }
+                            }
+                        });
+
+                }
+
+
+
+
+
+
+
+            /*  public void onLocationChanged(Location location) {
+
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users_A").child("tayubdfdfdf");
+        GeoFire geoFire = new GeoFire(ref);
+
+
+
+     geoFire.setLocation(userId, new
+                GeoLocation(location.getLatitude(), location.getLongitude()), new
+                GeoFire.CompletionListener() {
+                    @Override
+
+                    public void onComplete(String key, DatabaseError error) {
+                        if (error != null) {
+                            Toast.makeText(A5_VM.this, "There was an error saving the location to GeoFire: " + error, Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(A5_VM.this, "Location saved on server successfully!", Toast.LENGTH_LONG).show();
+
+                        }
+                    }
+                });
+*/
 
             @Override
             public void onError(Status status) {
@@ -112,28 +158,7 @@ public class A5_VM extends AppCompatActivity implements OnMapReadyCallback {
         mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
     }
 
-    public void onLocationChanged(Location location) {
-
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users_A").child("Requesters");
-        GeoFire geoFire = new GeoFire(ref);
-
-
-        geoFire.setLocation("location", new
-                GeoLocation(location.getLatitude(), location.getLongitude()), new
-                GeoFire.CompletionListener() {
-                    @Override
-                    //@Override
-                    public void onComplete(String key, DatabaseError error) {
-                        if (error != null) {
-                            Toast.makeText(A5_VM.this, "There was an error saving the location to GeoFire: " + error, Toast.LENGTH_LONG).show();
-                        } else {
-                            Toast.makeText(A5_VM.this, "Location saved on server successfully!", Toast.LENGTH_LONG).show();
-
-                        }
-                    }
-                });
 
 
     }
-}
+
