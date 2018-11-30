@@ -45,16 +45,7 @@ public class A6_RM extends AppCompatActivity implements OnMapReadyCallback {
         mViewHistory = (Button) findViewById(R.id.ViewHistory);
         Display_Button = (Switch) findViewById(R.id.Display_Buttons);
 
-        Display_Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if ( Display_Button.setChecked(false);)
-                {
-                    mMakeRequest.setVisibility(View.GONE);
-                    mViewHistory.setVisibility(View.GONE);
-                }
-            }
-        });
+
 
         mMakeRequest.setOnClickListener(new View.OnClickListener() {
             @Override
