@@ -37,6 +37,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDAFoS5Hs6UwNVus50WI__PW-oYvQV37YY" />
 
+
         <activity android:name=".A0_Welcome_Page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

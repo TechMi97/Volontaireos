@@ -101,14 +101,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="33dp"
-        android:layout_marginTop="248dp"
+        android:layout_marginTop="232dp"
         android:layout_marginRight="29dp"
         android:ems="10"
         android:hint="IC/passport"
 
         android:inputType="text"
         android:textSize="18sp"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
