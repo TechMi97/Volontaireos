@@ -102,35 +102,6 @@ public class A5_VM extends AppCompatActivity implements OnMapReadyCallback {
                 }
 
 
-
-
-
-
-
-            /*  public void onLocationChanged(Location location) {
-
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users_A").child("tayubdfdfdf");
-        GeoFire geoFire = new GeoFire(ref);
-
-
-
-     geoFire.setLocation(userId, new
-                GeoLocation(location.getLatitude(), location.getLongitude()), new
-                GeoFire.CompletionListener() {
-                    @Override
-
-                    public void onComplete(String key, DatabaseError error) {
-                        if (error != null) {
-                            Toast.makeText(A5_VM.this, "There was an error saving the location to GeoFire: " + error, Toast.LENGTH_LONG).show();
-                        } else {
-                            Toast.makeText(A5_VM.this, "Location saved on server successfully!", Toast.LENGTH_LONG).show();
-
-                        }
-                    }
-                });
-*/
-
             @Override
             public void onError(Status status) {
 

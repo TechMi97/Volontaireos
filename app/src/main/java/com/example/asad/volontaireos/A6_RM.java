@@ -7,9 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
+import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -65,7 +70,7 @@ public class A6_RM extends AppCompatActivity implements OnMapReadyCallback {
 
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("VolunteerAvailable");
-        GeoFire geoFire = new GeoFire(ref);
+        final GeoFire geoFire = new GeoFire(ref);
 
         mLogout=(Button) findViewById(R.id.logouttayub);
 
@@ -116,6 +121,46 @@ public class A6_RM extends AppCompatActivity implements OnMapReadyCallback {
                     System.out.println("Location saved");
             }
         });
+
+
+        PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
+                getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+
+        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+                mMap.clear();
+                mMap.addMarker(new MarkerOptions().position(place.getLatLng()).title(place.getName().toString()));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(place.getLatLng()));
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(), 12.0f));
+
+                geoFire.setLocation("testtayub", new
+                        GeoLocation(place.getLatLng().latitude, place.getLatLng().longitude), new
+                        GeoFire.CompletionListener() {
+                            @Override
+
+                            public void onComplete(String key, DatabaseError error) {
+                                if (error != null) {
+                                    Toast.makeText(A6_RM.this, "There was an error saving the location to GeoFire: " + error, Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(A6_RM.this, "Location saved on server successfully!", Toast.LENGTH_LONG).show();
+
+                                }
+                            }
+                        });
+
+            }
+
+
+            @Override
+            public void onError(Status status) {
+
+            }
+        });
+
+
+
+
     }
 
     @Override
