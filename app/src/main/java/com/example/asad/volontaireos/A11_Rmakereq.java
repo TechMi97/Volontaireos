@@ -73,8 +73,8 @@ public class A11_Rmakereq extends AppCompatActivity {
         mNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String title = mEmail.getText().toString();
-                final String description  = mPassword.getText().toString();
+                final String title = mTitle.getText().toString();
+                final String description  = mDescription.getText().toString();
             }
         });
 
