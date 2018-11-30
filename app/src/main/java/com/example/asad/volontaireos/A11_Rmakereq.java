@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -36,11 +37,14 @@ public class A11_Rmakereq extends AppCompatActivity {
 
     private ImageButton mCamera;
     private Button mUpload;
-
     private Uri filePath;
-
     private final int PICK_IMAGE_REQUEST = 71;
     private ImageView imageView;
+
+
+    private EditText mTitle, mDescription;
+    private Button mNext;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +61,22 @@ public class A11_Rmakereq extends AppCompatActivity {
 
 
         final String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("VolunteerAvailable");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Orders");
+
+        mTitle = (EditText) findViewById(R.id.TitleText);
+        mDescription = (EditText) findViewById(R.id.Description);
+        mNext=(Button) findViewById(R.id.nextButton);
 
 
 
+
+        mNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String title = mEmail.getText().toString();
+                final String description  = mPassword.getText().toString();
+            }
+        });
 
 
 
