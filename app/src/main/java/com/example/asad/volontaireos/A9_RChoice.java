@@ -12,7 +12,7 @@ public class A9_RChoice extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_a9__rmapreq);
+        setContentView(R.layout.a9_rchoice);
 
         btnmreq = (Button) findViewById(R.id.btnMReq);
         btnvmap  = (Button) findViewById(R.id.btnVmap);
@@ -27,10 +27,6 @@ public class A9_RChoice extends AppCompatActivity {
                 return;
             }
         });
-
-
-
-
 
         btnvmap.setOnClickListener(new View.OnClickListener() {
             @Override

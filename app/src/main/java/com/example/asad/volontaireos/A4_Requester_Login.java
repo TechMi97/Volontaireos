@@ -36,7 +36,7 @@ public class A4_Requester_Login extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if(user!=null){
-                    Intent b  =  new Intent(A4_Requester_Login.this,A6_RM.class);
+                    Intent b  =  new Intent(A4_Requester_Login.this,L_G_S_R.class);
                     startActivity(b);
                     finish();
                     return;

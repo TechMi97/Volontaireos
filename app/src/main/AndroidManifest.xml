@@ -10,6 +10,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
@@ -38,13 +40,11 @@
             android:value="AIzaSyDAFoS5Hs6UwNVus50WI__PW-oYvQV37YY" />
 
 
-        <activity android:name=".A0_Welcome_Page">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".A0_Welcome_Page"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".A1_Main" />
         <activity android:name=".A2_Volunteer_Login" />
         <activity android:name=".A3_Maps" />
@@ -54,10 +54,11 @@
         <activity android:name=".A6_RM" />
         <activity android:name=".A7_Rsignup" />
         <activity android:name=".L_G_S" />
+        <activity android:name=".L_G_S_R" />
         <activity android:name=".A8_Vsignup" />
-        <activity android:name=".A9_Rmapreq" />
-        <activity android:name=".A10_VMap" />
-        <activity android:name=".A11_makereq"></activity>
+        <activity android:name=".A9_RChoice" />
+        <activity android:name=".A10_RVMap" />
+        <activity android:name=".A11_Rmakereq" />
     </application>
 
 </manifest>
