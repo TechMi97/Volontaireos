@@ -17,6 +17,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -35,7 +38,7 @@ public class A11_Rmakereq extends AppCompatActivity {
     private Button mUpload;
 
     private Uri filePath;
-    private final int IMAGE_REQUEST = 71;
+
     private final int PICK_IMAGE_REQUEST = 71;
     private ImageView imageView;
 
@@ -50,6 +53,16 @@ public class A11_Rmakereq extends AppCompatActivity {
         mCamera = (ImageButton) findViewById(R.id.camera);
         mUpload = (Button) findViewById(R.id.upload);
         imageView = (ImageView) findViewById(R.id.imageView);
+
+
+
+        final String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("VolunteerAvailable");
+
+
+
+
+
 
         mCamera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,5 +136,7 @@ public class A11_Rmakereq extends AppCompatActivity {
             }
         }
     }
+
+
 
 }

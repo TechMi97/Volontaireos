@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
 
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;
@@ -27,10 +28,37 @@ public class A6_RM extends AppCompatActivity implements OnMapReadyCallback {
     private Button mLogout , mRequest ;
     private LatLng pickupLocation;
 
+    private Button mMakeRequest , mViewHistory ;
+    private Switch Display_Button ;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a7_rmaps);
+
+        mMakeRequest = (Button) findViewById(R.id.MakeRequest);
+        mViewHistory = (Button) findViewById(R.id.ViewHistory);
+        Display_Button = (Switch) findViewById(R.id.Display_Buttons);
+
+        Display_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               mMakeRequest.setVisibility(View.GONE);
+               mViewHistory.setVisibility(View.GONE);
+            }
+        });
+
+        mMakeRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent a = new Intent(A6_RM.this,A11_Rmakereq.class);
+                startActivity(a);
+                finish();
+                return;
+            }
+        });
+
+
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
