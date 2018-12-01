@@ -21,16 +21,19 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
 
 import java.io.IOException;
 import java.util.UUID;
 
 
 public class A11_Rmakereq extends AppCompatActivity {
+
 
     FirebaseStorage storage ;
     StorageReference storageReference ;
@@ -73,8 +76,8 @@ public class A11_Rmakereq extends AppCompatActivity {
         mNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String title = mEmail.getText().toString();
-                final String description  = mPassword.getText().toString();
+                final String title = mTitle.getText().toString();
+                final String description  = mDescription.getText().toString();
             }
         });
 
