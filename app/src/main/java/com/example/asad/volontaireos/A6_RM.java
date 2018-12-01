@@ -128,7 +128,10 @@ public class A6_RM extends AppCompatActivity implements OnMapReadyCallback {
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(place.getLatLng()));
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(), 12.0f));
 
-                geoFire.setLocation("testtayub", new
+                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("CustomerRequest");
+
+                geoFire.setLocation(userId, new
                         GeoLocation(place.getLatLng().latitude, place.getLatLng().longitude), new
                         GeoFire.CompletionListener() {
                             @Override

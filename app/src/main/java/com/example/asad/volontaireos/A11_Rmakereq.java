@@ -21,19 +21,16 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
 
 import java.io.IOException;
 import java.util.UUID;
 
 
 public class A11_Rmakereq extends AppCompatActivity {
-
 
     FirebaseStorage storage ;
     StorageReference storageReference ;
@@ -47,7 +44,10 @@ public class A11_Rmakereq extends AppCompatActivity {
 
     private EditText mTitle, mDescription;
     private Button mNext;
+    private Button mSave;
 
+    private FirebaseAuth mAuth ;
+    private FirebaseAuth.AuthStateListener firebaseAuthListener ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,22 +62,39 @@ public class A11_Rmakereq extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.imageView);
 
 
+        mAuth = FirebaseAuth.getInstance();
 
         final String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Orders");
 
         mTitle = (EditText) findViewById(R.id.TitleText);
         mDescription = (EditText) findViewById(R.id.Description);
-        mNext=(Button) findViewById(R.id.nextButton);
+        mNext=(Button) findViewById(R.id.GoNext);
+        mSave=(Button) findViewById(R.id.Save);
 
 
-
-
-        mNext.setOnClickListener(new View.OnClickListener() {
+        mSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String title = mTitle.getText().toString();
                 final String description  = mDescription.getText().toString();
+
+                String user_id = mAuth.getCurrentUser().getUid();
+                DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users_A").child("Chicken").child(user_id).child("Title");
+                current_user_db.setValue(mTitle);
+                current_user_db = FirebaseDatabase.getInstance().getReference().child("Users_A").child("Chicken").child(user_id).child("Description");
+                current_user_db.setValue(mDescription);
+
+            }
+        });
+
+        mNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent a = new Intent(A11_Rmakereq.this,A6_RM.class);
+                startActivity(a);
+                finish();
+                return;
             }
         });
 
