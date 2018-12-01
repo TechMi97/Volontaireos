@@ -64,6 +64,7 @@ public class A7_Rsignup extends AppCompatActivity {
                 final String nation = mNation.getText().toString();
                 final String name = mName.getText().toString();
 
+
                 mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(A7_Rsignup.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

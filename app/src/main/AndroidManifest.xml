@@ -60,14 +60,13 @@
         <activity android:name=".A10_RVMap" />
         <activity android:name=".A11_Rmakereq" />
 
-
-
         <service android:name=".service.Myfirebase">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
+        <activity android:name=".Form"></activity>
     </application>
 
 </manifest>

@@ -50,7 +50,8 @@ public class A6_RM extends AppCompatActivity implements OnMapReadyCallback {
         mMakeRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent a = new Intent(A6_RM.this,A11_Rmakereq.class);
+                //Intent a = new Intent(A6_RM.this,A11_Rmakereq.class);
+                Intent a = new Intent(A6_RM.this,Form.class);
                 startActivity(a);
                 finish();
                 return;
