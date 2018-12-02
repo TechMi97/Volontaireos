@@ -30,7 +30,7 @@ public class A6_RM extends AppCompatActivity implements OnMapReadyCallback {
 
 
     private GoogleMap mMap;
-    private Button mLogout , mRequest ;
+    private Button mLogout  ;
     private LatLng pickupLocation;
 
     private Button mMakeRequest , mViewHistory ;
@@ -80,31 +80,9 @@ public class A6_RM extends AppCompatActivity implements OnMapReadyCallback {
             }
         });
 
-        mRequest = (Button) findViewById(R.id.request);
 
-        mRequest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("CustomerRequest");
 
-                GeoFire geoFire = new GeoFire(ref);
-                geoFire.setLocation(userId, new GeoLocation(5.3342641, 100.3066604), new GeoFire.CompletionListener() {
-                    @Override
-                    public void onComplete(String key, DatabaseError error) {
-                        if(error!=null)
-                            System.err.println("Error"+ error);
-                        else
-                            System.out.println("Location saved");
-                    }
-                });
 
-                pickupLocation = new LatLng(5.3342641,100.3066604);
-                mMap.addMarker(new MarkerOptions().position(pickupLocation).title("Pickup Here"));
-                mRequest.setText("Gettin your Driver");
-
-            }
-        });
 
 
         geoFire.setLocation(userId, new GeoLocation(5.3342641, 100.3066604), new GeoFire.CompletionListener() {
