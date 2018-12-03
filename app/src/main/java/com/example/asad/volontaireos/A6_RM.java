@@ -58,7 +58,15 @@ public class A6_RM extends AppCompatActivity implements OnMapReadyCallback {
             }
         });
 
-
+        mViewHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent a = new Intent(A6_RM.this,displayreq.class);
+                startActivity(a);
+                finish();
+                return;
+            }
+        });
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);

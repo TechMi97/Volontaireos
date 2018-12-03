@@ -2,13 +2,14 @@ package com.example.asad.volontaireos;
 
 public class Infodata {
 String infoID;
-String infoName;
+String infoTitle;
 String infoDescription;
 
+    public Infodata() {}
 
-    public Infodata(String infoID, String infoName,String Description) {
+    public Infodata(String infoID, String infoTitle,String Description) {
         this.infoID = infoID;
-        this.infoName = infoName;
+        this.infoTitle = infoTitle;
         this.infoDescription = Description;
 
     }
@@ -17,12 +18,14 @@ String infoDescription;
         return infoID;
     }
 
-    public String getInfoName() {
-        return infoName;
+    public String getInfoTitle() {
+        return infoTitle;
     }
 
 
     public String getInfoDescription() {
         return infoDescription;
     }
+
+
 }

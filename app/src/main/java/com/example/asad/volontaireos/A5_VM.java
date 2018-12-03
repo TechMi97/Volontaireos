@@ -36,6 +36,7 @@ public class A5_VM extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
 
     private Button mLogout;
+    private Button mViewRequest ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class A5_VM extends AppCompatActivity implements OnMapReadyCallback {
         setContentView(R.layout.a5_vmaps);
 
         mLogout = (Button) findViewById(R.id.logouttayub);
-
+        mViewRequest = (Button) findViewById(R.id.ViewRequest);
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,6 +55,17 @@ public class A5_VM extends AppCompatActivity implements OnMapReadyCallback {
                 return;
             }
         });
+
+        mViewRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent a = new Intent(A5_VM.this,Voldisplay.class);
+                startActivity(a);
+                finish();
+                return;
+            }
+        });
+
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
