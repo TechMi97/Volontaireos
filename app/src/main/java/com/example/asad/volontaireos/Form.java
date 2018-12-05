@@ -43,8 +43,6 @@ public class Form extends AppCompatActivity {
     Button butAdd,butFinish;
     DatabaseReference databaseForm;
 
- /*   ListView listViewForm;
-    List<Infodata> formList;*/
 
     FirebaseStorage storage ;
     StorageReference storageReference ;
@@ -63,7 +61,7 @@ public class Form extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
 
-        databaseForm=FirebaseDatabase.getInstance().getReference("formartist");
+        databaseForm=FirebaseDatabase.getInstance().getReference("Request_Form");
 
         editTextTitle = (EditText) findViewById(R.id.editTextName);
         editTextDesc = (EditText) findViewById(R.id.editTextName2);
@@ -93,9 +91,7 @@ public class Form extends AppCompatActivity {
             }
         });
 
-       /* listViewForm = (ListView) findViewById(R.id.listViewForm);
 
-        formList = new ArrayList<>();*/
 
         butAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,33 +112,7 @@ public class Form extends AppCompatActivity {
         });
 
 
-/*
-    @Override
-    protected void onStart() {
-        super.onStart();
 
-        databaseForm.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            formList.clear();
-             for (DataSnapshot formSnapshot : dataSnapshot.getChildren()){
-
-                 Infodata infodata =formSnapshot.getValue(Infodata.class);
-
-
-                 formList.add(infodata);
-                    }
-
-                FormList adapter = new FormList(Form.this,formList);
-                listViewForm.setAdapter(adapter);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });*/
 
     }
 

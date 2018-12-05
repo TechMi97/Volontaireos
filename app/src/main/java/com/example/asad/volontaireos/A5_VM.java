@@ -84,23 +84,12 @@ public class A5_VM extends AppCompatActivity implements OnMapReadyCallback {
         mapFragment.getMapAsync(this);
 
         final String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-       // final  String infoid= FirebaseDatabase.getInstance().
+
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("VolunteerAvailable");
         final GeoFire geoFire = new GeoFire(ref);
 
-        //DatabaseReference requestdb = FirebaseDatabase.getInstance().getReference().child("formartist");
-        //final GeoFire geoFirereq = new GeoFire(requestdb);
 
 
-        /*geoFirereq.setLocation(userId, new GeoLocation(5.35, 100.30), new GeoFire.CompletionListener() {
-            @Override
-            public void onComplete(String key, DatabaseError error) {
-                if (error != null)
-                    System.err.println("Error" + error);
-                else
-                    System.out.println("Location saved");
-            }
-        });*/
 
 
         geoFire.setLocation(userId, new GeoLocation(5.35, 100.30), new GeoFire.CompletionListener() {
