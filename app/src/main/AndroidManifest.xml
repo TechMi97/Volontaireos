@@ -68,7 +68,9 @@
 
         <activity android:name=".Form" />
         <activity android:name=".displayreq" />
-        <activity android:name=".Voldisplay"></activity>
+        <activity android:name=".Voldisplay" />
+        <activity android:name=".ProfileUser"></activity>
+        <activity android:name=".ProfileUserV"></activity>
     </application>
 
 </manifest>

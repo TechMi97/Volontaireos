@@ -36,7 +36,7 @@ public class A5_VM extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
 
     private Button mLogout;
-    private Button mViewRequest ;
+    private Button mViewRequest ,mViewUser;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,6 +45,8 @@ public class A5_VM extends AppCompatActivity implements OnMapReadyCallback {
 
         mLogout = (Button) findViewById(R.id.logouttayub);
         mViewRequest = (Button) findViewById(R.id.ViewRequest);
+        mViewUser = (Button) findViewById(R.id.viewuserv);
+
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,13 +68,40 @@ public class A5_VM extends AppCompatActivity implements OnMapReadyCallback {
             }
         });
 
+        mViewUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent a = new Intent(A5_VM.this,ProfileUserV.class);
+                startActivity(a);
+                finish();
+                return;
+            }
+        });
+
+
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         final String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+       // final  String infoid= FirebaseDatabase.getInstance().
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("VolunteerAvailable");
         final GeoFire geoFire = new GeoFire(ref);
+
+        //DatabaseReference requestdb = FirebaseDatabase.getInstance().getReference().child("formartist");
+        //final GeoFire geoFirereq = new GeoFire(requestdb);
+
+
+        /*geoFirereq.setLocation(userId, new GeoLocation(5.35, 100.30), new GeoFire.CompletionListener() {
+            @Override
+            public void onComplete(String key, DatabaseError error) {
+                if (error != null)
+                    System.err.println("Error" + error);
+                else
+                    System.out.println("Location saved");
+            }
+        });*/
+
 
         geoFire.setLocation(userId, new GeoLocation(5.35, 100.30), new GeoFire.CompletionListener() {
             @Override
@@ -111,6 +140,22 @@ public class A5_VM extends AppCompatActivity implements OnMapReadyCallback {
                             }
                         });
 
+                geoFire.setLocation("locationtesting", new
+                        GeoLocation(place.getLatLng().latitude, place.getLatLng().longitude), new
+                        GeoFire.CompletionListener() {
+                            @Override
+
+                            public void onComplete(String key, DatabaseError error) {
+                                if (error != null) {
+                                    Toast.makeText(A5_VM.this, "There was an error saving the location to GeoFire: " + error, Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(A5_VM.this, "Location saved on server successfully!", Toast.LENGTH_LONG).show();
+
+                                }
+                            }
+                        });
+
+
                 }
 
 
@@ -139,6 +184,9 @@ public class A5_VM extends AppCompatActivity implements OnMapReadyCallback {
         mMap.addMarker(new MarkerOptions().position(QB).title("QB"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(QB));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
+
+
+
     }
 
 

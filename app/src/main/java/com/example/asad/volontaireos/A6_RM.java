@@ -33,7 +33,7 @@ public class A6_RM extends AppCompatActivity implements OnMapReadyCallback {
     private Button mLogout  ;
     private LatLng pickupLocation;
 
-    private Button mMakeRequest , mViewHistory ;
+    private Button mMakeRequest , mViewHistory,mViewUser ;
     private Switch Display_Button ;
 
     @Override
@@ -44,7 +44,7 @@ public class A6_RM extends AppCompatActivity implements OnMapReadyCallback {
         mMakeRequest = (Button) findViewById(R.id.MakeRequest);
         mViewHistory = (Button) findViewById(R.id.ViewHistory);
         Display_Button = (Switch) findViewById(R.id.Display_Buttons);
-
+        mViewUser = (Button) findViewById(R.id.button3);
 
 
         mMakeRequest.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +67,17 @@ public class A6_RM extends AppCompatActivity implements OnMapReadyCallback {
                 return;
             }
         });
+
+        mViewUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent a = new Intent(A6_RM.this,ProfileUser.class);
+                startActivity(a);
+                finish();
+                return;
+            }
+        });
+
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -93,7 +104,7 @@ public class A6_RM extends AppCompatActivity implements OnMapReadyCallback {
 
 
 
-        geoFire.setLocation(userId, new GeoLocation(5.3342641, 100.3066604), new GeoFire.CompletionListener() {
+       geoFire.setLocation(userId, new GeoLocation(5.3342641, 100.3066604), new GeoFire.CompletionListener() {
             @Override
             public void onComplete(String key, DatabaseError error) {
                 if(error!=null)
