@@ -43,7 +43,7 @@ public class A6_RM extends AppCompatActivity implements OnMapReadyCallback {
 
         mMakeRequest = (Button) findViewById(R.id.MakeRequest);
         mViewHistory = (Button) findViewById(R.id.ViewHistory);
-        Display_Button = (Switch) findViewById(R.id.Display_Buttons);
+      //  Display_Button = (Switch) findViewById(R.id.Display_Buttons);
         mViewUser = (Button) findViewById(R.id.button3);
 
 
